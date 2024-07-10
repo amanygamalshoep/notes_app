@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key});
-   final bodyColor = const [Colors.yellow,Colors.black];
+   
 
   @override
   Widget build(BuildContext context) {
