@@ -6,7 +6,7 @@ class NoteModel {
   @HiveField(0)
   final String title;
   @HiveField(1)
-  final String subTtile;
+  final String subTitle;
   @HiveField(2)
   final String date;
   @HiveField(3)
@@ -14,7 +14,7 @@ class NoteModel {
 
   NoteModel(
       {required this.title,
-      required this.subTtile,
+      required this.subTitle,
       required this.date,
       required this.color});
 }
