@@ -22,13 +22,13 @@ class AddNoteBottomSheet extends StatelessWidget {
               print('faliure${state.errMessage}');
             }
             if (state is AddNoteSuccess) {
-              Navigator.pop(context);
+               Navigator.pop(context);
             }
           },
           builder: (context, state) {
-            return const ModalProgressHUD(
-                inAsyncCall: State is AddNoteLoading ? true : false,
-                child: SingleChildScrollView(child: AddNoteForm()));
+            return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: const SingleChildScrollView(child: AddNoteForm()));
           },
         ),
       ),
