@@ -5,16 +5,7 @@ sealed class NotesState {}
 
 final class NotesInitial extends NotesState {}
 
-final class NotesLoading extends NotesState {}
 
-final class NotesSucess extends NotesState {
-  final List<NoteModel> notes;
 
-  NotesSucess(this.notes);
-}
 
-final class NotesFaliure extends NotesState {
-  final String errMessage;
 
-  NotesFaliure(this.errMessage);
-}
