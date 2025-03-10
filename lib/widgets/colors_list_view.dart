@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/Cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/constants.dart';
 
 class ColorsItem extends StatelessWidget {
   const ColorsItem({super.key, required this.isActive, required this.color});
@@ -8,11 +12,11 @@ class ColorsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isActive
-        ?  CircleAvatar(
+        ? CircleAvatar(
             backgroundColor: Colors.white,
             radius: 38,
             child: CircleAvatar(
-              backgroundColor: color ,
+              backgroundColor: color,
               radius: 34,
             ),
           )
@@ -31,32 +35,29 @@ class ColorsListView extends StatefulWidget {
 
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
-  List<Color> colors = const [
-    Color(0xffF3E9DC),
-    Color(0xffC08552),
-    Color(0xff5E3023),
-    Color(0xff895737),
-    Color(0xffDAB49D),
-  ];
+  
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 38 * 2,
       child: ListView.builder(
-          itemCount: colors.length,
+          itemCount: KColors.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: GestureDetector(
-                  onTap: () {
-                    currentIndex = index;
-                    setState(() {});
-                  },
-
-                  child: ColorsItem(isActive: currentIndex == index,color: colors[index],),
-                  ),
+                onTap: () {
+                  currentIndex = index;
+                  BlocProvider.of<AddNoteCubit>(context).color = KColors[index];
+                  setState(() {});
+                },
+                child: ColorsItem(
+                  isActive: currentIndex == index,
+                  color: KColors[index],
+                ),
+              ),
             );
           }),
     );
